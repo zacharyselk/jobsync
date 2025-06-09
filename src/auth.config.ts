@@ -32,4 +32,7 @@ export const authConfig = {
     },
   },
   providers: [], // Add providers with an empty array for now
+  // Add proxy configuration
+  trustHost: true,
+  basePath: process.env.NEXTAUTH_URL ? new URL(process.env.NEXTAUTH_URL).pathname : undefined,
 } satisfies NextAuthConfig;
