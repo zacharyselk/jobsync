@@ -1,14 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/signin",
-        permanent: false,
-      },
-    ];
-  },
   output: "standalone",
   async headers() {
     return [
@@ -23,6 +14,19 @@ const nextConfig = {
     ];
   },
   trustHost: true,
+  // Add trailing slash configuration
+  trailingSlash: false,
+  // Ensure proper handling of rewrites
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/signin',
+          destination: '/signin',
+        },
+      ],
+    };
+  },
 };
 
 export default nextConfig;
